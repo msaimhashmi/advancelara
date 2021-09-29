@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
 
 
     ],

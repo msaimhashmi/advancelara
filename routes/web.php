@@ -21,4 +21,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('form', 'FormController@index')->name('form');
+Route::post('form', 'FormController@store');
+
+Route::get('search-view', 'SearchController@index')->name('search.index');
+Route::get('search', 'SearchController@search')->name('search.result');
+
 require __DIR__.'/auth.php';
