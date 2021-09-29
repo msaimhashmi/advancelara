@@ -17,5 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('form', 'FormController@index')->name('form');
-Route::post('form', 'FormController@store');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
