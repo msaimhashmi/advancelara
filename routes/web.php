@@ -1,18 +1,10 @@
 <?php
 
+use App\Jobs\SendMailJob;
+use Carbon\now;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,6 +23,12 @@ Route::get('search', 'SearchController@search')->name('search.result');
 Route::get('/locale/{lang?}', function($lang=null){
 	App::setLocale($lang);
 	return view('dashboard');
+});
+
+Route::get('sendmail', function(){
+	SendMailJob::dispatch()->delay(now()->addSeconds(5));
+	// Mail::to('saimdigitalop@gmail.com')->send(new SendEmailMailable());
+	return 'Mail has been sent successfully!';
 });
 
 require __DIR__.'/auth.php';
