@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,5 +27,10 @@ Route::post('form', 'FormController@store');
 
 Route::get('search-view', 'SearchController@index')->name('search.index');
 Route::get('search', 'SearchController@search')->name('search.result');
+
+Route::get('/locale/{lang?}', function($lang=null){
+	App::setLocale($lang);
+	return view('dashboard');
+});
 
 require __DIR__.'/auth.php';
