@@ -1,8 +1,10 @@
 <?php
 
 use App\Jobs\SendMailJob;
+use App\Mail\SendEmailMailable;
 use Carbon\now;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 
