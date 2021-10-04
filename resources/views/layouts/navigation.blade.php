@@ -21,6 +21,13 @@
                         {{ trans_choice('header.item', 2) }}
                     </x-nav-link>
                 </div>
+                @can('subs-only', Auth::user())
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('subs')" :active="request()->routeIs('subs')">
+                        {{ __('header.subscribe') }}
+                    </x-nav-link>
+                </div>
+                @endcan
             </div>
 
             <!-- Settings Dropdown -->

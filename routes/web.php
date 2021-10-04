@@ -4,6 +4,7 @@ use App\Events\TaskEvent;
 use App\Jobs\SendMailJob;
 use App\Mail\SendEmailMailable;
 use Carbon\now;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -43,5 +44,17 @@ Route::get('sendmail', function(){
 Route::get('event', function(){
 	event(new TaskEvent('Hey how are you?'));
 });
+
+// GATES
+Route::get('subs', function(){
+	if(Gate::allows('subs-only', Auth::user()))
+	{
+		return view('subs');
+	}
+	else 
+	{
+		return "You are not subscriber, Subscribe now!";
+	}
+})->middleware(['auth'])->name('subs');
 
 require __DIR__.'/auth.php';

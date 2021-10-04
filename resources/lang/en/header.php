@@ -7,5 +7,6 @@ return [
 	'language' => 'language',
 	'english' => 'english',
 	'spanish' => 'spanish',
+	'subscribe' => 'Subscribe',
 	'item' => '{0} No Item |{1} Item (:count) |[2,*] Items (:count)',
 ];
